@@ -1,8 +1,8 @@
 // motion blur template by beesandbombs modified by azazel_r
 
 // Autor: Renée Richter
-// Datum: 31.08.2024
-// Zweck: Tetris Block Animation
+// Datum: vergessen :(
+// Zweck: noisy circle
 
 int[][] result; // pixel colors buffer for motion blur
 float t; // time global variable in [0,1[

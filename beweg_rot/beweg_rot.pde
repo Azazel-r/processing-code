@@ -60,5 +60,5 @@ float period(float t) {
 }
 
 float period2(float t) {
-    return 
+    return 0;
 }

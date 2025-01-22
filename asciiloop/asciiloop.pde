@@ -8,8 +8,8 @@ int off = 10;
 float zooom = 0.0025;
 OpenSimplexNoise noise;
 
-boolean SAVE = true;
-boolean LOOP = false;
+boolean SAVE = false;
+boolean LOOP = true;
 
 void setup() {
     size(800,800,P3D);
