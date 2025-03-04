@@ -1,41 +1,70 @@
 // motion blur template by beesandbombs modified by azazel_r
 
 // Autor: Renée Richter
-// Datum: vergessen :(
-// Zweck: Wellen Animation
+// Datum: 08.01.2025
+// Zweck: just another noise test wheee
 
 int[][] result; // pixel colors buffer for motion blur
 float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
-int samples = 50;
+int samples = 10;
 int numFrames = 200;       
-float shutter = 16;
+float shutter = 1.2;
 boolean SAVE = true;
 String SAVEAS = ".gif";
 
+// my stuff
+OpenSimplexNoise noise;
+int N = 40;
+float margin = 0.0;
+float l;
+float radius = 1;
+float zoom = 0.00125;
+
 void setup(){
-    size(800,800);
+    size(800,800,P3D);
     result = new int[width*height][3];
+    noise = new OpenSimplexNoise(2221);
+    rectMode(CENTER);
+    l = 1.0 * (width-2*margin)/N;
 }
 
 void draw_(){
-    push();
     
+    pushMatrix();
+    translate(width/2, height/2);
+    rotateX(TWO_PI * t);
+    rotateY(TWO_PI * t);
+    rotateZ(TWO_PI * t);
     background(0);
-    translate(200, height/2);
-    stroke(color(100,100,255));
-    strokeWeight(5);
-    line(0,-200,0,200);
+    stroke(0);
+    lights();
     
-    stroke(color(255,127,50));
-    line(400,-200,400,200);
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            pushMatrix();
+            float x = map(i, 0, N, margin, width-margin) + 0.5 * l;
+            float y = map(j, 0, N, margin, width-margin) + 0.5 * l;
+            float z = radius*cos(TWO_PI*t);
+            float w = radius*sin(TWO_PI*t);
+            float noiseVal = period((float) noise.eval(zoom*x,zoom*y,z,w));
+            translate(0,0,map(noiseVal, 0, 1, 0, -1000));
+            fill(map(x+y, 2*margin, width+height - 2*margin, 255, 0));
+            rotateX(TWO_PI * noiseVal);
+            rotateY(TWO_PI * noiseVal);
+            rotateZ(TWO_PI * noiseVal);
+            square(x,y,l);
+            popMatrix();
+        }
+    }
     
-    strokeWeight(6);
-    stroke(255);
-    drawSine((4*period(t)) % 1, 100, 100, 40, 400);
+    popMatrix();
     
-    pop();
+}
+
+float period(float p) {
+    return -0.5 * cos(PI * p) + 0.5;
 }
 
 //////////////////////////////////////////////////////////////////////////////
