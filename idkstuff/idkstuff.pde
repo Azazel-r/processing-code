@@ -1,7 +1,7 @@
 // motion blur template by beesandbombs modified by azazel_r
 
 // Autor: Renée Richter
-// Datum: vergessen :(
+// Datum: irgendwann Januar 2025
 // Zweck: noisy circle
 
 int[][] result; // pixel colors buffer for motion blur
