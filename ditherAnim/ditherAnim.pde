@@ -1,60 +1,78 @@
 // motion blur template by beesandbombs modified by azazel_r
 
 // Autor: Renée Richter
-// Datum: 16.03.2025
-// Zweck: Wellenanimation
+// Datum: 21.03.2025
+// Zweck: first test of dithered animation
 
 int[][] result; // pixel colors buffer for motion blur
 float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
-int samples = 5;
-int numFrames = 100;       
+int samples = 4;
+int numFrames = 250;       
 float shutter = 1.2;
-boolean SAVE = false;
+boolean SAVE = true;
 String SAVEAS = ".gif";
-
-// my shit
+//
+float rad = 300;
+float sphere_rad = 15;
+int NUM = 12;
+color[] cols = {color(0,200,0), color(200,200,0)};
 OpenSimplexNoise noise = new OpenSimplexNoise(22441);
-float Y_MIN = 200;
-float Y_MAX = 350;
+float zoom = 0.1;
 
 void setup(){
-    size(800,800);
+    size(800,800,P3D);
     result = new int[width*height][3];
+    sphereDetail(15);
 }
 
 void draw_(){
     
-    float radius = 1;
-    float deviation = 0.25;
-    float foam = 35;
+    push();
     
-    float Y_ADD1 = 300 * period(t); // 150 * period(t);
-    float Y_ADD2 = 300 * period((t+0.85) % 1); // 400 * period((t+0.85) % 1);
+    lights();
+    background(0);
     
-    // yellow background (beach)
-    background(220,200,0);
+    // box
+    translate(width/2, height/2);
+    rotateX(radians(-30));
+    pushMatrix();
+    rotateY(TWO_PI * period2(t));
+    noStroke();
+    fill(lerpColor(color(0,0,0,0), color(200), period(t)));
+    if (.25 <= t && t < .75) box(150);
+    popMatrix();
     
-    strokeWeight(1);
-    for (int i = 0; i < width; ++i) {
-        
-        float p = map(i, 0, width, 0, 1);
-        float noiseval = (float) noise.eval(radius*sin(TWO_PI*p), radius*-cos(TWO_PI*p), deviation*sin(TWO_PI*t), deviation*-cos(TWO_PI*t));
-        float y = map(noiseval, -1, 1, Y_MIN + Y_ADD1, Y_MAX + Y_ADD2);
-        // draw 1 pixel line of sea foam
-        stroke(200,200,230);
-        line(i, y, i, y-foam);
-        // draw 1 pixel line of water
-        stroke(0,50,150);
-        line(i, y-foam, i, 0);
-        
+    // spheres
+    for (int i = 0; i < NUM; ++i) {
+        pushMatrix();
+        fill(lerpColor(cols[i % 2], color(0,0,0,0), period(t)));
+        // noise
+        rotateX(TWO_PI * period2((map((float) noise.eval(10 * (i+1) + zoom*sin(TWO_PI * t), 10 * (i+1) + zoom*cos(TWO_PI * t)), -0.66, 0.66, 0, 1) + .5) % 1));
+        rotateY(TWO_PI * period2((map((float) noise.eval(20 * (i+1) + zoom*sin(TWO_PI * t), 20 * (i+1) + zoom*cos(TWO_PI * t)), -0.66, 0.66, 0, 1) + .5) % 1));
+        rotateZ(TWO_PI * period2((map((float) noise.eval(30 * (i+1) + zoom*sin(TWO_PI * t), 30 * (i+1) + zoom*cos(TWO_PI * t)), -0.66, 0.66, 0, 1) + .5) % 1));
+        float x =  sin(TWO_PI * i / NUM + TWO_PI * period2((t+.5) % 1)) * rad;
+        float z = -cos(TWO_PI * i / NUM + TWO_PI * period2((t+.5) % 1)) * rad;
+        translate(x, 0, z);
+        sphere(sphere_rad);
+        popMatrix();
     }
+    
+    dither();
+    
+    pop();
     
 }
 
+// sine [0 - 1 - ]
 float period(float p) {
     return -0.5 * cos(TWO_PI * p) + 0.5;
+}
+
+// sine [0 - 1]
+float period2(float p) {
+    return -0.5 * cos(PI * p) + 0.5;
 }
 
 //////////////////////////////////////////////////////////////////////////////
