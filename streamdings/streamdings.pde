@@ -5,7 +5,7 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 4;
-int numFrames = 200;        
+int numFrames = 150;        
 float shutter = 1.2;
 boolean SAVE = true;
 String SAVEAS = ".gif";
@@ -52,13 +52,15 @@ void draw_(){
 }
 
 float period4(float p) { // used for screen 2 squares
-    if (p < .3) return 0;
-    else return -0.5 * cos(TWO_PI * map(p, .3, 1, 0, 1)) + 0.5;
+    // if (p < .3) return 0;
+    // else return -0.5 * cos(TWO_PI * map(p, .3, 1, 0, 1)) + 0.5;
+    return -0.5 * cos(TWO_PI*p) + 0.5;
 }
 
 float period3(float p) { // used for screen 2
-    if (p < .3) return 0;
-    else return -0.5 * cos(PI * map(p, .3, 1, 0, 1)) + 0.5;
+    // if (p < .3) return 0;
+    // else return -0.5 * cos(PI * map(p, .3, 1, 0, 1)) + 0.5;
+    return -0.5 * cos(PI*p) + 0.5;
 }
 
 float period2(float p) { // unused

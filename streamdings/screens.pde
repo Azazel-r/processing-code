@@ -7,7 +7,7 @@ void secondScreen() {
     for (int i = 0; i < 18; ++i) {
         float x = map(i, 0, 18-1, pos1[0]+margin, pos2[0]-margin);
         float y = pos1[1];
-        float diff = constrain(map(abs(x - whereIsIt), width/3, 0, 0, 1),0,1);
+        float diff = constrain(map(abs(x - whereIsIt), width * 0.5, 0, 0, 1),0,1);
         color c = lerpColor(STAINEDWHITE, ELDENGOLD, colorperiod(diff)); 
         stroke(c);
         fill(c);
@@ -19,7 +19,7 @@ void secondScreen() {
     for (int i = 0; i < 10; ++i) {
         float x = pos2[0];
         float y = map(i, 0, 10-1, pos2[1]+margin, pos3[1]-margin);
-        float diff = constrain(map(abs(y - whereIsIt), height/3, 0, 0, 1),0,1);
+        float diff = constrain(map(abs(y - whereIsIt), height * 0.5, 0, 0, 1),0,1);
         color c = lerpColor(STAINEDWHITE, ELDENGOLD, colorperiod(diff)); 
         stroke(c);
         fill(c);
@@ -31,7 +31,7 @@ void secondScreen() {
     for (int i = 0; i < 16; ++i) {
         float x = map(i, 0, 16-1, pos3[0]-margin, pos4[0]+margin);
         float y = pos3[1];
-        float diff = constrain(map(abs(x - whereIsIt), width/3, 0, 0, 1),0,1);
+        float diff = constrain(map(abs(x - whereIsIt), width * 0.5, 0, 0, 1),0,1);
         color c = lerpColor(STAINEDWHITE, ELDENGOLD, colorperiod(diff)); 
         stroke(c);
         fill(c);
