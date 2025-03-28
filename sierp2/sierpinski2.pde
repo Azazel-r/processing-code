@@ -5,10 +5,10 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 10;
-int numFrames = 200;        
+int numFrames = 240;        
 float shutter = 0.8;
-boolean SAVE = false;
-String SAVEAS = ".gif";
+boolean SAVE = true;
+String SAVEAS = ".png";
 float[] pos;
 float[] vecs;
 float X = 0;
@@ -32,7 +32,7 @@ void setup_() {
     
 }
 
-void draw_() {
+void draw__() {
     
     push();
     

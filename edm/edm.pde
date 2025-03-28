@@ -1,18 +1,19 @@
 OpenSimplexNoise noise;
 int N = 10;
 float d;
-int numFrames = 200;
+int numFrames = 240;
 float[] noiseVals;
 float offset = 10;
 float noiseOffset = 0.2;
 color c1 = color(214,2,112);
 color c2 = color(0,56,168);
 
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 
 void setup() {
-    size(500,500);
+    size(800,800);
     d = 0.85 * width/N;
     offset += d/2;
     rectMode(CENTER);
@@ -44,7 +45,7 @@ void draw() {
             }
         }
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE && frameCount <= numFrames) saveFrame("frames\\frame###" + SAVEAS);
     }
     
 }

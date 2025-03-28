@@ -1,5 +1,5 @@
 OpenSimplexNoise noise;
-int numFrames = 200;
+int numFrames = 240;
 int N = 60;
 float radii = 1.1;
 boolean SAVE = true;
@@ -9,8 +9,8 @@ color COL1 = 255;
 color COL2 = 0;
 
 void setup() {
+    size(800,800);
     noise = new OpenSimplexNoise(22334);
-    size(600,600);
 }
 
 void draw() {
@@ -46,7 +46,7 @@ float period(float p, float seed) {
 
 float period2(float p, float seed) {
     float noiseVal = 1.0 * (float) noise.eval(seed + radii*cos(TWO_PI*p), radii*sin(TWO_PI*p));
-    return map(noiseVal, -1, 1, 0, 15);
+    return map(noiseVal, -1, 1, 0, 20);
 }
 color period3(float p, float seed) {
     float noiseVal = 1.0 * (float) noise.eval(seed + radii*cos(TWO_PI*p), radii*sin(TWO_PI*p));

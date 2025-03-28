@@ -1,10 +1,11 @@
 int numFrames = 60;
 int n = 50;
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 
 void setup() {
-    size(500,500);
+    size(800,800);
 }
 
 void draw() {
@@ -29,7 +30,7 @@ void draw() {
             }
         }
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
 }
 

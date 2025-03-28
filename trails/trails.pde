@@ -2,9 +2,9 @@
 //
 //
 
-int numFrames = 200;
-boolean SAVE = false;
-String SAVEAS = ".gif";
+int numFrames = 240;
+boolean SAVE = true;
+String SAVEAS = ".png";
 
 void setup() {
     size(800,800);

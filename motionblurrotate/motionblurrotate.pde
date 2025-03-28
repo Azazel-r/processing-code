@@ -4,11 +4,11 @@ int[][] result; // pixel colors buffer for motion blur
 float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
-int samples = 100;
-int numFrames = 100;        
+int samples = 30;
+int numFrames = 120;        
 float shutter = 1.2;
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 
 
 void setup(){

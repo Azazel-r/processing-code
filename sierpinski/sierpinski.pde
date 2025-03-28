@@ -1,13 +1,14 @@
 Sierpinski s;
 boolean SAVE = true;
+String SAVEAS = ".png";
 boolean LOOP = false;
-int numFrames = 100;
+int numFrames = 120;
 int MIN = 580;
 int MAX = MIN*2;
 int deep = 7;
 
 void setup() {
-    size(1000,1000);
+    size(800,800);
     s = new Sierpinski(0,0,MIN,deep);
 }
 
@@ -32,7 +33,7 @@ void draw() {
         rotate(radians(-60));
         s.drawSierp(0);
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
         
     }
 }

@@ -2,10 +2,11 @@ Windmill w;
 Wind wind1, wind2, wind3, wind4, wind5, wind6;
 int numFrames = 240;
 boolean SAVE = true;
+String SAVEAS = ".png";
 
 void setup() {
-    size(500,500);
-    w = new Windmill(4, 200, color(255));
+    size(800,800);
+    w = new Windmill(4, int(1.0 * width/3), color(255));
     wind1 = new Wind(0.25 * height, 0, 200, 20);
     wind2 = new Wind(0.36 * height, 0, 120, 50);
     wind3 = new Wind(0.45 * height, 0, 310, 80);
@@ -28,7 +29,7 @@ void draw() {
         wind4.drawMe(t);
         wind5.drawMe(t);
         wind6.drawMe(t);
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
     
 }

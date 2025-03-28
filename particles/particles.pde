@@ -4,9 +4,9 @@
 
 int numFrames = 300;
 OpenSimplexNoise noise;
-int N = 350;
+int N = 100;
 Particle[] parts;
-boolean SAVE = false;
+boolean SAVE = true;
 String SAVEAS = ".png";
 int bigR = 250;
 int off = 200;
@@ -60,7 +60,7 @@ void draw()
         updatePixels();
         
         if (frameCount<=numFrames) {
-            saveFrame("frames\\fr###.png");
+            saveFrame("frames\\frame###" + SAVEAS);
             println(frameCount,"/",numFrames);
         }
         
@@ -70,7 +70,7 @@ void draw()
 }
 
 void setup() {
-    fullScreen();
+    size(800,800);
     noise = new OpenSimplexNoise(1333);
     parts = new Particle[N];
     for (int i = 0; i < N; ++i) {

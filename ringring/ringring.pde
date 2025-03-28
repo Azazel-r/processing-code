@@ -1,14 +1,15 @@
 Ring ring;
-int numFrames = 200;
-boolean SAVE = false;
-boolean LOOP = true;
+int numFrames = 240;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 color COL1 = color(30,120,30);
 color COL2 = color(200,200,30);
 
 void setup() {
-    size(1000,1000,P3D);
+    size(800,800,P3D);
     sphereDetail(15);
-    ring = new Ring(2, width/2, height/2, 0, 350, 200, COL1, COL2);
+    ring = new Ring(12, width/2, height/2, 0, 350, 40, COL1, COL2);
     setup_ascii();
 }
 
@@ -24,9 +25,9 @@ void draw() {
         //translate(width/2, height/2);
         //sphere(300);
         
-        render_ascii(0);
+        // render_ascii(0);
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
         
     }
 }

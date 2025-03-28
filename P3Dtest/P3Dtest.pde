@@ -1,10 +1,11 @@
-int numFrames = 200;
+int numFrames = 240;
 boolean SAVE = true;
+String SAVEAS = ".png";
 boolean LOOP = false;
 float rot = 0;
 
 void setup() {
-    size(500,500, P3D);
+    size(800,800, P3D);
 }
 
 void draw() {
@@ -20,13 +21,13 @@ void draw() {
         translate(width/2, height/2, 0);
         rot += 720.0/numFrames * period(t);
         rotateY(radians(rot));
-        translate(100,0,0);
+        translate(200,0,0);
         rotateX(radians(rot*2));
         rectMode(CENTER);
-        rect(0,0,100,100);
+        rect(0,0,150,150);
         popMatrix();
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
 }
 

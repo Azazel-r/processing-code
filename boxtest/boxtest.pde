@@ -2,11 +2,11 @@
 // Datum: 18.04.2024
 // Zweck: Testen von ASCII rendering
 
-int numFrames = 200;
+int numFrames = 240;
 
 // VERÄNDERBARE KONSTANTEN
-boolean SAVE = false;
-String SAVE_AS = ".gif";
+boolean SAVE = true;
+String SAVE_AS = ".png";
 boolean LOOP = true;
 boolean ASCII = true;
 boolean GRAYSCALE = false;
@@ -15,7 +15,7 @@ color[] boxFarben = new color[] {color(255,0,0),   color(0,255,0),   color(0,0,2
                                  color(255,255,0), color(255,0,255), color(0,255,255)};
 
 void setup() {
-    size(500,500,P3D);
+    size(800,800,P3D);
     textAlign(CENTER,CENTER);
     rectMode(CENTER);
     myFont = createFont("Arial", 16);
@@ -33,7 +33,7 @@ void draw() {
         // ASCII render: (siehe anderer processing tab)
         if (ASCII) render_ascii();
         
-        if (SAVE) saveFrame("frame###" + SAVE_AS);
+        if (SAVE && frameCount <= numFrames) saveFrame("frames\\frame###" + SAVE_AS);
     }
 }
 

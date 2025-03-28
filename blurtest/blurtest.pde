@@ -5,7 +5,7 @@
 int numFrames = 60;
 int samples = 5;
 int[][] result;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 
 void setup() {
     size(800,800);

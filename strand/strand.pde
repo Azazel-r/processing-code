@@ -9,10 +9,10 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 5;
-int numFrames = 100;       
+int numFrames = 120;       
 float shutter = 1.2;
-boolean SAVE = false;
-String SAVEAS = ".gif";
+boolean SAVE = true;
+String SAVEAS = ".png";
 
 // my shit
 OpenSimplexNoise noise = new OpenSimplexNoise(22441);

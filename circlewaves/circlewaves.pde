@@ -1,8 +1,8 @@
 OpenSimplexNoise noise;
 int numFrames = 240;
 PFont myFont, myFont2;
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+boolean LOOP = false;
 Pond p;
 String end = "png";
 
@@ -33,7 +33,7 @@ void draw() {
         p.drawTropfen(t);
         p.drawWiese();
         
-        if (SAVE && frameCount <= numFrames) saveFrame("frame###." + end);
+        if (SAVE && frameCount <= numFrames) saveFrame("frames\\frame###." + end);
         
     }
     

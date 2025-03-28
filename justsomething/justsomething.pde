@@ -9,10 +9,10 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 10;
-int numFrames = 200;       
+int numFrames = 240;       
 float shutter = 1.2;
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 
 // my stuff
 OpenSimplexNoise noise;
@@ -33,10 +33,10 @@ void setup(){
 void draw_(){
     
     pushMatrix();
-    translate(width/2, height/2);
-    rotateX(TWO_PI * t);
-    rotateY(TWO_PI * t);
-    rotateZ(TWO_PI * t);
+    // translate(width/2, height/2);
+    // rotateX(TWO_PI * t);
+    // rotateY(TWO_PI * t);
+    // rotateZ(TWO_PI * t);
     background(0);
     stroke(0);
     lights();
@@ -49,11 +49,11 @@ void draw_(){
             float z = radius*cos(TWO_PI*t);
             float w = radius*sin(TWO_PI*t);
             float noiseVal = period((float) noise.eval(zoom*x,zoom*y,z,w));
-            translate(0,0,map(noiseVal, 0, 1, 0, -1000));
+            translate(0,0,map(noiseVal, 0, 1, 0, -2000));
             fill(map(x+y, 2*margin, width+height - 2*margin, 255, 0));
-            rotateX(TWO_PI * noiseVal);
-            rotateY(TWO_PI * noiseVal);
-            rotateZ(TWO_PI * noiseVal);
+            // rotateX(TWO_PI * noiseVal);
+            // rotateY(TWO_PI * noiseVal);
+            // rotateZ(TWO_PI * noiseVal);
             square(x,y,l);
             popMatrix();
         }

@@ -1,15 +1,16 @@
 int numFrames = 240;
 Scheibe[] s;
-int steps = 15;
+int steps = 30;
 boolean SAVE = true;
+String SAVEAS = ".png";
 boolean LOOP = false;
 
 void setup() {
-    size(500,500, P3D);
-    s = new Scheibe[64];
+    size(800,800, P3D);
+    s = new Scheibe[256];
     for (int i = 0; i < sqrt(s.length); i++) {
         for (int j = 0; j < sqrt(s.length); j++) {
-            s[i*8 + j] = new Scheibe(map(j, 0, sqrt(s.length)-1, -steps*10, steps*10), map(i, 0, sqrt(s.length)-1, -steps*10, steps*10), 20, color(255,0,0));
+            s[i*16 + j] = new Scheibe(map(j, 0, sqrt(s.length)-1, -steps*10, steps*10), map(i, 0, sqrt(s.length)-1, -steps*10, steps*10), 20, color(255,0,0));
         }
     }
     
@@ -25,7 +26,7 @@ void draw() {
             s[i].update(t);
             s[i].drawMe();
         }
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
 }
 

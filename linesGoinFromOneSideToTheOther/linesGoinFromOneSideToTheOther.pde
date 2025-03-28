@@ -1,12 +1,12 @@
 OpenSimplexNoise noise;
-int numFrames = 200;
+int numFrames = 240;
 myFontSize fontObj;
 Line[] l;
 PFont fallback;
 float fact = 1;
 float betterFactor = 0.25;
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+boolean LOOP = false;
 String saveAs = ".png";
 
 void setup() {
@@ -45,7 +45,7 @@ void draw() {
             l[i].drawMe(t);
         }
         
-        if (SAVE) saveFrame("frame###" + saveAs);
+        if (SAVE) saveFrame("frames\\frame###" + saveAs);
     }
 }
 

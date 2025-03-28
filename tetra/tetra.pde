@@ -9,10 +9,10 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 10;
-int numFrames = 350;       
+int numFrames = 420;
 float shutter = 1.2;
-boolean SAVE = false;
-String SAVEAS = ".gif";
+boolean SAVE = true;
+String SAVEAS = ".png";
 int rad = 150;
 color[] BGs = new color[] {color(100,100,0), color(0,100,100), color(100,0,100), color(0,100,0), color(100,0,0), color(100,50,0), color(0,0,100)};
 

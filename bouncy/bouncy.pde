@@ -2,17 +2,17 @@
 
 // Autor: Renée Richter
 // Datum: 31.08.2024
-// Zweck: Tetris Block Animation
+// Zweck: Bouncy iwas
 
 int[][] result; // pixel colors buffer for motion blur
 float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 10;
-int numFrames = 100;       
+int numFrames = 120;       
 float shutter = 1.4;
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 float rad = 600;
 
 void setup(){

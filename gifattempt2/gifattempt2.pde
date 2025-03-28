@@ -1,6 +1,8 @@
 PFont f;
 myCircle c;
 int kreise = 16;
+int numFrames = 240;
+int t = 0;
 
 void setup() {
     size(800,800);
@@ -12,12 +14,15 @@ void setup() {
 }
 
 void draw() {
-    if (frameCount <= kreise) {
-        background(230);
-        c.drawMe();
-        text(dez2bin(c.active, (int) log2(kreise)), width/2, height/2);
-        c.update();
-        saveFrame("frame###.gif");
+    if (frameCount <= numFrames) {
+        if (t % (numFrames/kreise) == 0) {
+            background(230);
+            c.drawMe();
+            text(dez2bin(c.active, (int) log2(kreise)), width/2, height/2);
+            c.update();
+        }
+        saveFrame("frames\\frame###.png");
+        ++t;
     }
 }
 

@@ -1,6 +1,7 @@
 int numFrames = 60;
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 int N = 127;
 float MAXSIZE = 10;
 float[][] punkte;
@@ -8,7 +9,7 @@ int strings = 1;
 
 void setup() {
     
-    size(1000,1000);
+    size(800,800);
     punkte = new float[strings][];
     for (int i = 0; i < strings; i++) {
         punkte[i] = randomRandpunkt();
@@ -54,7 +55,7 @@ void draw() {
             */
         }
         println("-------------------------");
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
     
 }

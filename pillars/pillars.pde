@@ -2,21 +2,21 @@
 // Datum: 04.07.2024
 // Zweck: Isometric Pillars up n down
 
-int numFrames = 200;
+int numFrames = 240;
 float[] points = new float[] {0,0,300,0,300,300,0,300};
 int boxWidth = 25;
 int[] numberOf = new int[] {12,12,12,12};
 float all = sum(numberOf);
-boolean SAVE = false;
-String SAVEAS = ".gif";
+boolean SAVE = true;
+String SAVEAS = ".png";
 
 // colors
-color RED = color(255,0,0);
-color YELLOW = color(255,255,0);
-color GREEN = color(0,255,0);
-color CYAN = color(0,255,255);
-color BLUE = color(0,0,255);
-color PURPLE = color(255,0,255);
+color RED = color(200,0,0);
+color YELLOW = color(200,200,0);
+color GREEN = color(0,200,0);
+color CYAN = color(0,200,200);
+color BLUE = color(0,0,200);
+color PURPLE = color(200,0,200);
 color LIGHTBLUE = color(91, 206, 250);
 color PINK = color(245, 169, 184);
 color WHITE = color(255);
@@ -47,8 +47,8 @@ void draw() {
             //if (j == numberOf[i]-1) continue;
             float newT = (t + map(count++, 0, all+1, 0, 1)) % 1;
             float heightVal = period(newT, 0, 300);
-            // color myCol = lerpColors(newT, RED, YELLOW, GREEN, CYAN, BLUE, PURPLE, RED, RED, YELLOW, GREEN, CYAN, BLUE, PURPLE, RED); // rainbow
-            color myCol = lerpColors(newT, WHITE, PINK, LIGHTBLUE, PINK, WHITE, WHITE, PINK, LIGHTBLUE, PINK, WHITE); // trans
+            color myCol = lerpColors(newT, RED, YELLOW, GREEN, CYAN, BLUE, PURPLE, RED, RED, YELLOW, GREEN, CYAN, BLUE, PURPLE, RED); // rainbow
+            // color myCol = lerpColors(newT, WHITE, PINK, LIGHTBLUE, PINK, WHITE, WHITE, PINK, LIGHTBLUE, PINK, WHITE); // trans
             
             float startX = points[i*2];
             float startY = points[i*2 + 1];

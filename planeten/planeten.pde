@@ -4,6 +4,7 @@
 
 int numFrames = 300;
 boolean SAVE = true;
+String SAVEAS = ".png";
 
 void setup() {
     size(800,800,P3D);
@@ -27,7 +28,7 @@ void draw() {
         obj1(r, m, a, t, c);
     }
     
-    if (SAVE && frameCount<=numFrames) saveFrame("frames\\frame###.gif");
+    if (SAVE && frameCount<=numFrames) saveFrame("frames\\frame###" + SAVEAS);
 }
 
 void drawBahn(float r, float[] m, float[] a) {
@@ -54,7 +55,7 @@ void obj1(float r, float[] m, float[] a, float t, color c) {
     rotateX(radians(-a[0] - 30));
     rotateY(radians(-a[1]));
     rotateZ(radians(-a[2]));
-    rotateY(-TWO_PI * t);
+    rotateY(-2 * TWO_PI * t);
     stroke(c);
     noFill();
     box(30);

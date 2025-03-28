@@ -9,10 +9,10 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 10;
-int numFrames = 200;       
+int numFrames = 240;       
 float shutter = 1.2;
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 int rotations = 400;
 int n = 32;
 int size = 500;

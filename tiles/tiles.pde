@@ -1,15 +1,15 @@
 //
-//
+// Datumn: 21.06.2024
 //
 
 float[][] coords;
 Tile[] tiles;
-int numFrames = 500;
+int numFrames = 600;
 int X = 4;
 int Y = 4;
 
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 
 void setup() {
     size(800,800);

@@ -1,8 +1,9 @@
 OpenSimplexNoise noise;
 PFont myFont;
 int numFrames = 300;
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 color BG = 0;
 color COL1 = color(200, 100);
 Letterthing[] l;
@@ -10,18 +11,18 @@ String density;
 float MIN, MAX;
 float diff = 0.05;
 int N = 500;
-boolean drawTwoTimes = false;
+boolean drawTwoTimes = true;
 float z = 3000;
 
 void setup() {
-    size(1000,1000,P3D);
+    size(800,800,P3D);
     textAlign(CENTER, CENTER);
     
     density = "abcdefghijklmnopqrstuvwxyz0123456789";
     MIN = 1.0*width/25;
     MAX = 4.0*width/5;
     noise = new OpenSimplexNoise(123);
-    myFont = createFont("Webdings", 64);
+    myFont = createFont("BreitkopfFraktur.ttf", 64);
     l = new Letterthing[N];
     for (int i = 0; i < l.length; ++i) {
         int mult = 0;
@@ -59,7 +60,7 @@ void draw() {
         for (int i = 0; i < l.length; ++i) {
             l[i].drawMe(t);
         }
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
 }
 

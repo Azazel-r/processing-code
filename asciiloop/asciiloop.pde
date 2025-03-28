@@ -1,4 +1,4 @@
-int numFrames = 200;
+int numFrames = 240;
 String ascii = "Ñ@#W$9876543210?!abc;:+=-,._ ";
 PFont myFont;
 int rad = 122;
@@ -8,8 +8,9 @@ int off = 10;
 float zooom = 0.0025;
 OpenSimplexNoise noise;
 
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 
 void setup() {
     size(800,800,P3D);
@@ -42,7 +43,7 @@ void draw() {
             }
         }
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
 }
 

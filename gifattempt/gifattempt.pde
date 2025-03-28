@@ -1,6 +1,6 @@
 PFont f;
 float r = 200;
-float numFrames = 200;
+float numFrames = 240;
 int i = 0;
 
 void setup() {
@@ -59,8 +59,8 @@ void draw() {
         }
     }
     
-    if (frameCount <= numFrames) saveFrame("frame###.png");
+    if (frameCount <= numFrames) saveFrame("frames\\frame###.png");
     
     i++;
-    i %= 200;
+    i %= numFrames;
 }

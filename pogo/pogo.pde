@@ -3,11 +3,12 @@
 // Zweck: Simple Pogo Pokestop Animation
 
 PShape outerdebris, bigdebris, smalldebris, outer, inner, half;
-int numFrames = 200;
+int numFrames = 240;
 color blue = color(44,228,255);
 color purple = color(241,131,255);
-boolean SAVE = false;
-boolean LOOP = true;
+boolean SAVE = true;
+String SAVEAS = ".png";
+boolean LOOP = false;
 
 void setup() {
     size(800,800, P3D);
@@ -71,9 +72,9 @@ void draw() {
         pop();
         pop();
         
-        render_ascii(255);
+        //render_ascii(255);
         
-        if (SAVE) saveFrame("frame###.gif");
+        if (SAVE) saveFrame("frames\\frame###" + SAVEAS);
     }
     
 }

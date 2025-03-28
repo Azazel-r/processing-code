@@ -1,6 +1,6 @@
 // String ascii = "MLIiao._ "; // unbenutzt ATM
-int X = 50; // buchstaben in X richtung
-int Y = 50; // buchstaben in Y richtung
+int X = 80; // buchstaben in X richtung
+int Y = 80; // buchstaben in Y richtung
 int offset = 5; // offset vom bildschrimrand
 color[][] farben = new color[Y][X];
 PFont myFont;

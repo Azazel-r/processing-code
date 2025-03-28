@@ -2,10 +2,10 @@
 // Datum: 02.05.2024
 // Zweck: Stuff. Der sich bewegt. Und rotiert. Oder so.
 
-int numFrames = 100;
+int numFrames = 120;
 boolean LOOP = true;
 boolean SAVE = true;
-String SAVEAS = ".gif";
+String SAVEAS = ".png";
 int[] sizes = new int[] {20,30,40,50,60,70};
 int abstand = 100;
 float[] nextCoords = new float[] { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1,
@@ -50,7 +50,7 @@ void draw() {
             
         }
         
-        if (SAVE && frameCount <= numFrames) saveFrame("frame###" + SAVEAS);
+        if (SAVE && frameCount <= numFrames) saveFrame("frames\\frame###" + SAVEAS);
     }
     
 }
