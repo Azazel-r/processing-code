@@ -9,14 +9,12 @@ float t; // time global variable in [0,1[
 float c; // other global variable for testing things, controlled by mouse
 
 int samples = 4;
-int numFrames = 100;       
+int numFrames = 50;       
 float shutter = 1.2;
 boolean SAVE = true;
 String SAVEAS = ".gif";
 int len = 625;
 int deg = 7;
-float[] pos1 = {50,75};
-float[] pos2 = {750, 275};
 
 void setup(){
     size(800,800);
@@ -27,7 +25,7 @@ void draw_(){
     
     push();
     
-    background(200);
+    backgradient(color(139,0,160), color(160,0,77), 3);
     for (int i = 0; i < 6; ++i)
     drawBahn(getPos(i), i % 2 == 0 ? 1 : -1);
     
@@ -35,39 +33,86 @@ void draw_(){
     
 }
 
-void drawBall(float p, int back) {
+PShape dreieck(int back) {
+    float c = len;
+    float a = c * sin(radians(deg)) / sin(HALF_PI);
+    float b = c * sin(radians(90-deg)) / sin(HALF_PI);
+    PShape erg = createShape();
+    erg.beginShape();
+    erg.fill(0);
+    erg.noStroke();
+    erg.vertex(0,0);
+    erg.vertex(0,a);
+    erg.vertex(back*b,a);
+    println("a: " + a);
+    println("b: " + b);
+    erg.endShape(CLOSE);
+    return erg;
+    
+}
+
+void drawBall(float p, int back, int marge) {
     float rad = 30;
+    noStroke();
+    fill(0);
     if (p < .8) {
         p = map(p, 0, .8, 0, 1);
-        float x = p * len;
+        float x = p*p * (len-marge);
         float y = -rad * back;
         circle(x,y,rad*2);
         
     } else {
         p = map(p, .8, 1, 0, 1);
-        float x = len + 90 * p;
-        float y = -rad * back + back * 130 * p;
+        float x = (len-marge) + (90+marge) * period2(p);
+        float y = -rad * back + back * 128 * p*p;
         circle(x,y,rad*2);
     }
 }
 
 float[] getPos(int i) {
-    int Y = -350;
+    int Y = -340;
     int Yjump = 213;
-    int X1 = 50;
-    int X2 = 750;
+    int X1 = 0;
+    int X2 = 800;
     return new float[] {i % 2 == 0 ? X1 : X2, Y + Yjump*i};
 }
 
 void drawBahn(float[] pos, int back) {
+    int marge = 50;
+    int K = 3;
     push();
     translate(pos[0],pos[1]);
+    shape(dreieck(back), 0, 0);
     rotate(back == 1 ? radians(deg) : PI - radians(deg));
-    line(0,0,len,0);
-    drawBall(t, back);
+    translate(marge,0);
+    for (int i = 0; i < K; ++i) {
+        float p = 1.0 * (i+t)/K;
+        drawBall(p, back, marge);
+    }
     pop();
 }
 
+void backgradient(color c1, color c2, int n) {
+    pushStyle();
+    strokeWeight(1);
+    for (int j = 0; j < n; ++j) {
+        int start = int(1.0*j/n * height);
+        int end = int(1.0*(j+1)/n * height);
+        for (int i = start; i < end; ++i) {
+            stroke(lerpColor(c1, c2, period(map(i, start, end, 0, 1) + t) % 1));
+            line(0,i,width,i);
+        }
+    }
+    popStyle();
+}
+
+float period(float p) {
+    return -0.5 * cos(TWO_PI * p) + 0.5;
+}
+
+float period2(float p) {
+    return 1 - (1-p) * (1-p);
+}
 //////////////////////////////////////////////////////////////////////////////
 
 void draw()
